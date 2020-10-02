@@ -93,6 +93,7 @@ void solve()
                 i++;
                 j += 2;
             }
+            
         }
         cout<<count<<endl;
         for(auto u : ans)

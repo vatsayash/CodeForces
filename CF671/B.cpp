@@ -34,6 +34,9 @@ using namespace std;
 ll power(ll a,ll b){return b?power(a*a%mod,b/2)*(b%2?a:1)%mod:1;}
 ll gcd(ll a,ll b){if(a==0 || b == 0) return max(a,b);if(a == 1 || b == 1)return 1;return gcd(max(a,b)%min(a,b),min(a,b));}
 
+
+vl curr;
+
 void solve()
 {   
     ll n;
@@ -47,6 +50,17 @@ int main()
 {
     int t = 1;
     cin>>t;
+    curr.pb(1);
+    ll temp = 1;
+    ll max_l = pow(10,18);
+    int i = 2;
+    while(temp < max_l)
+    {
+        ll ind = pow(2,i)-1;
+        temp = curr.back() + (ind*(ind+1))/2;
+        curr.pb(temp);
+        i++;
+    }
     while(t--)
     {
         solve();
