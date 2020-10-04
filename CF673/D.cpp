@@ -38,7 +38,47 @@ ll gcd(ll a,ll b){if(a==0 || b == 0) return max(a,b);if(a == 1 || b == 1)return 
 
 void solve()
 {   
-    
+    int n;
+    cin>>n;
+    vl a(n,0);
+    ll sum = 0;
+    int count = 0;
+    forn(i,n)
+    {
+        cin>>a[i];
+        if(i > 0 && a[i]%(i+1) != 0)
+        count += 2;
+        else if(i > 0)
+        {
+            count++;
+        }
+        sum += a[i];    
+    }
+    if(sum%n != 0)
+    {
+        cout<<-1<<endl;
+        return;
+    }
+    count += n-1;
+    cout<<count<<endl;
+    for(int i = 1 ; i < n ; i++)
+    {
+        if(a[i]%(i+1) == 0)
+        {
+            cout<<i+1<<" "<<1<<" "<<a[i]/(i+1)<<endl;
+        }
+        else
+        {
+            cout<<1<<" "<<i+1<<" "<<i+1 - (a[i]%(i+1))<<endl;
+            a[i] += (i+1) - (a[i]%(i+1));
+            cout<<i+1<<" "<<1<<" "<<a[i]/(i+1)<<endl;
+        }
+    }
+    for(int i = 1 ; i < n ; i++)
+    {
+        cout<<1<<" "<<i+1<<" "<<sum/n<<endl;
+    }
+    return;
 }
 
 
